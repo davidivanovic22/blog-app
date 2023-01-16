@@ -56,8 +56,6 @@ export class SinglePostComponent implements OnInit, OnDestroy {
             this.categories.push(category);
           }
         });
-        console.log(this.categories);
-        
       }
     });
   }

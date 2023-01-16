@@ -38,8 +38,6 @@ export class CategoryDialogComponent implements OnInit {
     private readonly publicService: PublicService
   ) {
     if (data) {
-      console.log(data);
-
       this.category = data;
       this.form.get('id')?.setValue(this.category.id);
       this.form.get('name')?.setValue(this.category.name);

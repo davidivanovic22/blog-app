@@ -58,8 +58,6 @@ export class SinglePostEditComponent implements OnInit {
             this.categories.push(category);
           }
         });
-        console.log(this.categories);
-        
       }
     });
   }
