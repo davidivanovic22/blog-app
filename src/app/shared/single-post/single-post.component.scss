@@ -1,0 +1,43 @@
+.single-wrapper {
+    width: 90%;
+    margin: auto;
+
+    .back-btn {
+        margin: 10px 0;
+    }
+}
+
+.comment {
+    display: flex;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+
+    .comment-label {
+        line-height: 1;
+
+        .comment-name {
+            font-weight: 500;
+            font-size: 0.85rem;
+            color: #292929;
+        }
+
+        .comment-time {
+            font-weight: 100;
+            color: #768791;
+        }
+    }
+
+    .comment-content {
+        color: #768791;
+        margin-top: 0.1rem;
+    }
+
+    .comment-action {
+        color: #c3ccd3;
+        line-height: 1.2;
+
+        span {
+            margin-right: 1rem;
+        }
+    }
+}

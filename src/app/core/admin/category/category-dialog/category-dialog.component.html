@@ -1,0 +1,60 @@
+<div class="single-content">
+  <mat-toolbar class="single-toolbar" color="primary"
+    >{{ category?.id ? "Edit" : "Add" }} post</mat-toolbar
+  >
+  <mat-card>
+    <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <textarea
+          #name
+          autofocus
+          type="text"
+          matInput
+          maxlength="255"
+          placeholder="Name"
+          formControlName="name"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        >
+        </textarea>
+        <mat-hint>{{ name.value.length }} / 255</mat-hint>
+        <mat-error *ngIf="form.controls['name']?.hasError('required')">
+          Title is required.
+        </mat-error>
+        <mat-error *ngIf="form.controls['name']?.hasError('maxlength')">
+          Max length is 255.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          #description
+          matInput
+          placeholder="Description"
+          formControlName="description"
+          maxlength="512"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+        <mat-hint>{{ description.value.length }} / 512</mat-hint>
+        <mat-error *ngIf="form.controls['description']?.hasError('required')">
+          Title is required.
+        </mat-error>
+        <mat-error *ngIf="form.controls['description']?.hasError('maxlength')">
+          Max length is 512.
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid || loading"
+      >
+        {{ category?.id ? "Edit" : "Add" }}
+      </button>
+    </form>
+  </mat-card>
+</div>

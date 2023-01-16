@@ -1,0 +1,16 @@
+<div class="public-wrapper">
+  <app-pagination
+    [data]="category"
+    [show]="true"
+    (changePage)="changePage($event)"
+  ></app-pagination>
+
+  <div class="blog">
+    <app-category-card [category]="category"></app-category-card>
+  </div>
+
+  <app-pagination
+    [data]="category"
+    (changePage)="changePage($event)"
+  ></app-pagination>
+</div>

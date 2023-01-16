@@ -1,0 +1,53 @@
+<div class="single-wrapper">
+  <button
+    mat-button
+    mat-raised-button
+    routerLink=""
+    class="back-btn"
+    color="primary"
+  >
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    Back to Blog
+  </button>
+  <mat-card class="single-card mat-elevation-z8">
+    <mat-card-title>{{ article?.title }}</mat-card-title>
+    <mat-card-content>
+      <p>
+        {{ article?.body }}
+      </p>
+
+      <mat-divider></mat-divider>
+
+      <h2 *ngIf="category(categories, article?.category_id, 'name') !== ''">
+        {{ "Category: " + category(categories, article?.category_id, "name") }}
+      </h2>
+      <div
+        *ngIf="category(categories, article?.category_id, 'description') !== ''"
+      >
+        <h2>Description:</h2>
+        <p>
+          {{ category(categories, article?.category_id, "description") }}
+        </p>
+      </div>
+    </mat-card-content>
+    <div *ngIf="articleComments?.data?.length > 0">
+      <h2>Comments:</h2>
+      <mat-card-content *ngFor="let comment of articleComments?.data">
+        <div class="comment comment-level-1">
+          <img [src]="url_2" alt="" />
+          <div>
+            <div class="comment-label">
+              <span class="comment-name">{{ comment?.title }}</span>
+              <span class="comment-time">
+                {{ comment?.created_at | dayAgo }}</span
+              >
+            </div>
+            <div class="comment-content">
+              {{ comment?.description }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>

@@ -1,0 +1,58 @@
+<button
+  mat-button
+  mat-raised-button
+  color="primary"
+  class="add-btn"
+  (click)="openDialog(null)"
+  *ngIf="router.url.includes('admin')"
+>
+  Add post
+</button>
+<div class="blog-wrapper" *ngFor="let article of article?.data">
+  <mat-card class="blog-card mat-elevation-z6">
+    <mat-card-title>{{ article?.title }}</mat-card-title>
+    <mat-card-content>
+      <p>
+        {{ article?.body }}
+      </p>
+
+      <mat-divider></mat-divider>
+
+      <h2 *ngIf="category(categories, article?.category_id, 'name') !== ''">
+        {{ "Category: " + category(categories, article?.category_id, "name") }}
+      </h2>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        [routerLink]="['details', article.id]"
+        *ngIf="!router.url.includes('admin')"
+      >
+        Details
+        <mat-icon>keyboard_arrow_right</mat-icon>
+      </button>
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="openDialog(article)"
+        *ngIf="router.url.includes('admin')"
+      >
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+      <button
+        mat-button
+        mat-raised-button
+        color="warn"
+        (click)="deletePost(article.id)"
+        *ngIf="router.url.includes('admin')"
+      >
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

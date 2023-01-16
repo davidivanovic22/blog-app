@@ -1,0 +1,57 @@
+<div class="btn-pagination">
+  <button
+    mat-button
+    mat-mini-fab
+    class="pag"
+    color="primary"
+    (click)="paginator(data.first_page_url)"
+    [disabled]="!data?.prev_page_url"
+    [innerHTML]="'<<'"
+  ></button>
+  <button
+    mat-button
+    mat-mini-fab
+    class="pag"
+    color="primary"
+    (click)="paginator(data.prev_page_url)"
+    [disabled]="!data?.prev_page_url"
+    [innerHTML]="'<'"
+  ></button>
+
+  <button
+    mat-button
+    mat-mini-fab
+    class="pag"
+    *ngFor="
+      let link of data?.links
+        | paginationClear
+        | slice : data?.current_page - 1 : data?.current_page + 3
+    "
+    [innerHTML]="link.label"
+    [color]="link.active ? 'primary' : ''"
+    (click)="paginator(link.url)"
+    [disabled]="!link.url"
+  ></button>
+
+  <button
+    mat-button
+    mat-mini-fab
+    class="pag"
+    color="primary"
+    (click)="paginator(data.next_page_url)"
+    [disabled]="!data?.next_page_url"
+    [innerHTML]="'>'"
+  >
+    >
+  </button>
+  <button
+    mat-button
+    mat-mini-fab
+    class="pag"
+    color="primary"
+    (click)="paginator(data.last_page_url)"
+    [disabled]="!data?.next_page_url"
+    [innerHTML]="'>>'"
+  ></button>
+</div>
+<h2 *ngIf="show">{{ data?.current_page }}/{{ data?.last_page }}</h2>

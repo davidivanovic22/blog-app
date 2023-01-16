@@ -1,0 +1,30 @@
+.categories {
+    width: 90%;
+    margin: auto;
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 60px;
+        padding: 20px 0;
+    }
+
+
+    table {
+        margin-top: 30px;
+
+        p {
+            width: 400px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+
+            @media only screen and (max-width: 600px) {
+                width: 150px;
+            }
+        }
+    }
+}

@@ -1,0 +1,71 @@
+<div class="single-content">
+  <mat-toolbar class="single-toolbar" color="primary"
+    >{{ article?.id ? "Edit" : "Add" }} post</mat-toolbar
+  >
+  <mat-card>
+    <form [formGroup]="form" novalidate (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <textarea
+          #title
+          autofocus
+          type="text"
+          matInput
+          maxlength="255"
+          placeholder="Title"
+          formControlName="title"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        >
+        </textarea>
+        <mat-hint>{{ title.value.length }} / 255</mat-hint>
+        <mat-error *ngIf="form.controls['title'].hasError('required')">
+          Title is required.
+        </mat-error>
+        <mat-error *ngIf="form.controls['title'].hasError('maxlength')">
+          Max length is 255.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea
+          #body
+          matInput
+          placeholder="Body"
+          formControlName="body"
+          maxlength="1000"
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="1"
+          cdkAutosizeMaxRows="5"
+        ></textarea>
+        <mat-hint>{{ body.value.length }} / 1000</mat-hint>
+        <mat-error *ngIf="form.controls['body'].hasError('required')">
+          Title is required.
+        </mat-error>
+        <mat-error *ngIf="form.controls['body'].hasError('maxlength')">
+          Max length is 1000.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category_id">
+          <mat-option
+            *ngFor="let category of categories"
+            [value]="category.id"
+            >{{ category.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        type="submit"
+        mat-raised-button
+        color="primary"
+        [disabled]="form.invalid || loading"
+      >
+        {{ article?.id ? "Edit" : "Add" }}
+      </button>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,53 @@
+<div class="buttons">
+  <button
+    mat-button
+    mat-raised-button
+    routerLink="/admin"
+    class="back-btn"
+    color="primary"
+  >
+    <mat-icon>keyboard_arrow_left</mat-icon>
+    Back to Blog
+  </button>
+  <button
+    mat-button
+    mat-raised-button
+    color="primary"
+    class="add-btn"
+    (click)="openDialog()"
+  >
+    Add category
+  </button>
+</div>
+<div class="category-wrapper" *ngFor="let category of category?.data">
+  <mat-card class="category-card mat-elevation-z6">
+    <mat-card-title>{{ category?.name }}</mat-card-title>
+    <mat-card-content>
+      <p>
+        {{ category?.description }}
+      </p>
+
+      <mat-divider></mat-divider>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-button
+        mat-raised-button
+        color="primary"
+        (click)="openDialog(category)"
+      >
+        <mat-icon>edit</mat-icon>
+        Edit
+      </button>
+      <button
+        mat-button
+        mat-raised-button
+        color="warn"
+        (click)="deleteCategory(category.id)"
+      >
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

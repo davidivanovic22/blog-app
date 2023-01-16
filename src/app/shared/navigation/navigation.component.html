@@ -1,0 +1,55 @@
+<mat-toolbar color="primary" class="mat-elevation-z8">
+  <div class="toolbar-auth">
+    <div *ngIf="currentUser">
+      <button
+        mat-icon-button
+        *ngIf="sidenav?.mode === 'over'"
+        (click)="sidenav.toggle()"
+      >
+        <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
+        <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
+      </button>
+    </div>
+    <span>BrameBlog</span>
+  </div>
+
+  <mat-icon [matMenuTriggerFor]="menu" class="user-icon" *ngIf="currentUser"
+    >account_circle</mat-icon
+  >
+  <span class="auth" (click)="login()" *ngIf="!currentUser">Login</span>
+</mat-toolbar>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item (click)="logout()">Log Out</button>
+</mat-menu>
+
+<mat-sidenav-container>
+  <mat-sidenav
+    #sidenav="matSidenav"
+    class="mat-elevation-z8"
+    *ngIf="currentUser"
+  >
+    <img
+      class="avatar mat-elevation-z8"
+      src="https://source.unsplash.com/c_GmwfHBDzk/200x200"
+    />
+
+    <h4 class="name">{{ currentUser.fullName }}</h4>
+
+    <mat-divider></mat-divider>
+
+    <button mat-button class="menu-button" routerLink="/">
+      <mat-icon>home</mat-icon>
+      <span>Home</span>
+    </button>
+
+    <button mat-button class="menu-button" routerLink="/admin">
+      <mat-icon>person</mat-icon>
+      <span>Admin dashboard</span>
+    </button>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content mat-elevation-z8">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

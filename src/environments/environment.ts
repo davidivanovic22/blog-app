@@ -3,7 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseHref: 'http://18.192.182.140/api',
+  user: {
+    username: 'admin',
+    password: 'admin'
+  }
 };
 
 /*

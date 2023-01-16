@@ -1,0 +1,26 @@
+<!-- <app-category></app-category> -->
+<div class="admin-wrapper">
+  <div class="blog-wrapper">
+    <app-pagination
+      [data]="data"
+      [show]="true"
+      (changePage)="changePage($event)"
+    ></app-pagination>
+
+    <div class="blog">
+      <app-blog-card [article]="data"></app-blog-card>
+    </div>
+
+    <app-pagination
+      [data]="data"
+      (changePage)="changePage($event)"
+    ></app-pagination>
+  </div>
+  <div class="type-wrapper">
+    <mat-card class="category-card" [routerLink]="['category']">
+      <h1 class="category-name">Category</h1>
+      <mat-icon class="category-icon">local_activity</mat-icon>
+      <p class="category-number">{{ category?.total }}</p>
+    </mat-card>
+  </div>
+</div>

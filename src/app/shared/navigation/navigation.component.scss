@@ -1,0 +1,90 @@
+mat-toolbar {
+    color: white !important;
+    justify-content: space-between;
+}
+
+mat-sidenav {
+    margin: 16px;
+    width: 250px;
+    border-right: none;
+    background: #002b5c !important;
+    color: white !important;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.content {
+    height: calc(100vh - 130px);
+    border-radius: 10px;
+    margin: 16px 16px 0 16px;
+    padding: 16px;
+    overflow: auto;
+
+    @media #{"screen and (max-width: 663px)", "screen and (min-width: 664px) and (max-width: 1123px)"} {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+}
+
+mat-sidenav-container {
+    height: calc(100vh - 65px);
+}
+
+.menu-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 1rem;
+    text-align: start !important;
+
+    mat-icon {
+        margin-right: 8px;
+    }
+}
+
+.avatar {
+    margin-top: 16px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 8px;
+    font-weight: normal;
+}
+
+.designation {
+    margin-top: 2px;
+    font-size: 0.7rem;
+    color: lightgrey;
+}
+
+mat-divider {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+}
+
+.user-icon {
+    cursor: pointer;
+}
+
+.auth {
+    cursor: pointer;
+}
+
+.toolbar-auth {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
